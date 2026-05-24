@@ -1,0 +1,25 @@
+{
+  "incidencias": [
+    {
+      "id": "1",
+      "titulo": "Error en el módulo de pagos",
+      "descripcion": "El sistema no procesa pagos con tarjeta Visa correctamente",
+      "estado": "Pendiente",
+      "prioridad": "Alta"
+    },
+    {
+      "id": "2",
+      "titulo": "Botón de login no responde",
+      "descripcion": "En móviles el botón de ingresar no hace nada al tocarlo",
+      "estado": "En Progreso",
+      "prioridad": "Media"
+    },
+    {
+      "id": "3",
+      "titulo": "Imagen de perfil no carga",
+      "descripcion": "Las fotos de perfil aparecen en blanco para algunos usuarios",
+      "estado": "Resuelto",
+      "prioridad": "Baja"
+    }
+  ]
+}
