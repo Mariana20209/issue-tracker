@@ -8,19 +8,18 @@
       "prioridad": "Alta"
     },
     {
+      "id": "2",
+      "titulo": "Botón de login no responde",
+      "descripcion": "En móviles el botón de ingresar no hace nada al tocarlo",
+      "estado": "En Progreso",
+      "prioridad": "Media"
+    },
+    {
       "id": "3",
       "titulo": "Imagen de perfil no carga",
       "descripcion": "Las fotos de perfil aparecen en blanco para algunos usuarios",
       "estado": "Resuelto",
       "prioridad": "Baja"
-    },
-    {
-      "titulo": "Error de página",
-      "descripcion": "La pagina no funciona.",
-      "estado": "Resuelto",
-      "prioridad": "Alta",
-      "id": "R8fck7kD5KU"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
