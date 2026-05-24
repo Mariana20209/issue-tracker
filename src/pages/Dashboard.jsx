@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import { getIncidencias, deleteIncidencia } from '../services/incidencias.service'
+import FormIncidencia from '../components/FormIncidencia'
+import { getIncidencias, deleteIncidencia, createIncidencia, updateIncidencia } from '../services/incidencias.service'
 import { alertaExito, alertaError, alertaConfirmacion } from '../helpers/alerts'
 
 const Dashboard = () => {
   const [incidencias, setIncidencias] = useState([])
   const [loading, setLoading] = useState(true)
   const [busqueda, setBusqueda] = useState('')
+  const [mostrarForm, setMostrarForm] = useState(false)
+  const [incidenciaEditar, setIncidenciaEditar] = useState(null)
 
   useEffect(() => {
     cargarIncidencias()
@@ -24,6 +27,28 @@ const Dashboard = () => {
     }
   }
 
+  const handleGuardar = async (form) => {
+    try {
+      if (incidenciaEditar) {
+        await updateIncidencia(incidenciaEditar.id, form)
+        await alertaExito('Incidencia actualizada correctamente')
+      } else {
+        await createIncidencia(form)
+        await alertaExito('Incidencia creada correctamente')
+      }
+      setMostrarForm(false)
+      setIncidenciaEditar(null)
+      cargarIncidencias()
+    } catch {
+      alertaError('No se pudo guardar la incidencia')
+    }
+  }
+
+  const handleEditar = (inc) => {
+    setIncidenciaEditar(inc)
+    setMostrarForm(true)
+  }
+
   const handleDelete = async (id) => {
     const resultado = await alertaConfirmacion('Esta incidencia será eliminada permanentemente')
     if (resultado.isConfirmed) {
@@ -35,6 +60,11 @@ const Dashboard = () => {
         alertaError('No se pudo eliminar la incidencia')
       }
     }
+  }
+
+  const handleCerrarForm = () => {
+    setMostrarForm(false)
+    setIncidenciaEditar(null)
   }
 
   const incidenciasFiltradas = incidencias.filter(inc =>
@@ -75,9 +105,16 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
+      {mostrarForm && (
+        <FormIncidencia
+          onGuardar={handleGuardar}
+          onCerrar={handleCerrarForm}
+          incidenciaEditar={incidenciaEditar}
+        />
+      )}
+
       <div className="max-w-6xl mx-auto px-4 py-8">
 
-        {/* Contadores */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <div className="bg-white rounded-xl p-5 shadow text-center border-l-4 border-yellow-400">
             <p className="text-3xl font-bold text-yellow-500">{contadores.Pendiente}</p>
@@ -93,7 +130,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Buscador y botón */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <input
             type="text"
@@ -103,14 +139,13 @@ const Dashboard = () => {
             className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <button
-            onClick={() => {}}
+            onClick={() => setMostrarForm(true)}
             className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2 rounded-lg text-sm transition-colors duration-200"
           >
             + Nueva Incidencia
           </button>
         </div>
 
-        {/* Tarjetas */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {loading ? (
             <>
@@ -137,7 +172,10 @@ const Dashboard = () => {
                   </span>
                 </div>
                 <div className="flex gap-2">
-                  <button className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-sm font-medium py-2 rounded-lg transition-colors">
+                  <button
+                    onClick={() => handleEditar(inc)}
+                    className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-sm font-medium py-2 rounded-lg transition-colors"
+                  >
                     ✏️ Editar
                   </button>
                   <button

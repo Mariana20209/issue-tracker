@@ -13,6 +13,13 @@
       "descripcion": "Las fotos de perfil aparecen en blanco para algunos usuarios",
       "estado": "Resuelto",
       "prioridad": "Baja"
+    },
+    {
+      "titulo": "Error de página",
+      "descripcion": "La pagina no funciona.",
+      "estado": "Resuelto",
+      "prioridad": "Alta",
+      "id": "R8fck7kD5KU"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
