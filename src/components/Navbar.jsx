@@ -24,7 +24,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="text-right hidden sm:block"> {/* Oculta el nombre y rol en pantallas pequeñas */}
+        <div className="text-right hidden sm:block">
           <p className="font-semibold text-sm">{usuario?.nombre}</p>
           <p className="text-indigo-200 text-xs">{usuario?.rol}</p>
         </div>

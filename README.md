@@ -1,16 +1,50 @@
-# React + Vite
+md# Issue Tracker - Sistema de Gestión de Incidencias
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada como prueba técnica para el cargo de Desarrollador Frontend Junior. Permite gestionar reportes de errores (bugs) de forma organizada y eficiente.
 
-Currently, two official plugins are available:
+##  Demo en vivo
+- **Frontend:** https://issue-tracker-[https://issue-tracker-amber-nu.vercel.app/].vercel.app
+- **API:** https://issue-tracker-8scw.onrender.com/incidencias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack Tecnológico
+- React.js + Vite
+- React Router DOM
+- Tailwind CSS
+- SweetAlert2
+- JSON Server (API REST simulada)
+- LocalStorage (sesión simulada)
+- Git + GitHub (GitFlow)
 
-## React Compiler
+## Funcionalidades
+- Login con nombre y rol, sesión persistente en LocalStorage
+- Rutas protegidas
+- CRUD completo de incidencias
+- Confirmación con SweetAlert2 al eliminar
+- Skeleton loader mientras carga la API
+- Buscador por título
+- Filtros por estado
+- Contadores de incidencias por estado
+- Badges de colores por prioridad y estado
+- Diseño responsivo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estructura del proyecto
+src/
+├── pages/
+├── components/
+├── services/
+├── helpers/
+└── routes/
 
-## Expanding the ESLint configuration
+## Instalación local
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/Mariana20209/issue-tracker.git
+cd issue-tracker
+npm install
+npm run dev
+```
+
+En otra terminal:
+```bash
+json-server db.json --port 3001
+```

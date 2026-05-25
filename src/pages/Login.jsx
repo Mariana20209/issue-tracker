@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-/*Pidenombre y rol al usuario, si el nombre está vacío muestra una alerta, si no guarda el usuario en el localStorage y redirige al dashboard*/
-
 const Login = () => {
   const [nombre, setNombre] = useState('')
   const [rol, setRol] = useState('Administrador')
@@ -15,7 +13,7 @@ const Login = () => {
         icon: 'error',
         title: 'Campo vacío',
         text: 'Por favor ingresa tu nombre para continuar',
-        confirmButtonColor: '#6366f1'
+        confirmButtonColor: '#9b9cf1'
       })
       return
     }
@@ -27,7 +25,7 @@ const Login = () => {
       icon: 'success',
       title: `¡Bienvenido, ${nombre}!`,
       text: `Ingresando como ${rol}`,
-      confirmButtonColor: '#6366f1',
+      confirmButtonColor: '#a6a8ff',
       timer: 1500,
       showConfirmButton: false
     }).then(() => {
@@ -36,7 +34,7 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
 
         <div className="text-center mb-8">
