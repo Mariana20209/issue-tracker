@@ -3,7 +3,7 @@ md# Issue Tracker - Sistema de Gestión de Incidencias
 Aplicación web desarrollada como prueba técnica para el cargo de Desarrollador Frontend Junior. Permite gestionar reportes de errores (bugs) de forma organizada y eficiente.
 
 ##  Demo en vivo
-- **Frontend:** https://issue-tracker-[https://issue-tracker-amber-nu.vercel.app/].vercel.app
+- **Frontend:** https://issue-tracker-amber-nu.vercel.app/
 - **API:** https://issue-tracker-8scw.onrender.com/incidencias
 
 ## Stack Tecnológico
